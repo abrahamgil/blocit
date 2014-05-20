@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   def show
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
   end
 
   def new
@@ -42,10 +44,10 @@ class PostsController < ApplicationController
       render :new
     end
   end
-end
 
-private
+  private
 
-def post_params
-  params.require(:post).permit(:title, :body, :image)
+  def post_params
+    params.require(:post).permit(:title, :body, :image)
+  end
 end
