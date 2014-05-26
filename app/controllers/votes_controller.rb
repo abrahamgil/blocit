@@ -1,19 +1,18 @@
-
 class VotesController < ApplicationController
   before_filter :setup
     def up_vote
-    update_vote(1)
-    redirect_to :back
+      update_vote(1)
+      redirect_to :back
     end
 
     def down_vote
       update_vote(-1)
       redirect_to :back
     end
-
+    
   private
     
-    
+
   def setup
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
@@ -32,4 +31,5 @@ class VotesController < ApplicationController
     end
   end
 
+  
 end
