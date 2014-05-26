@@ -26,14 +26,15 @@ end
   # The `skip_confirmation!` method sets the confirmation date
   # to avoid sending an email. The `save` method updates the database.
 
-  5.times do
+  50.times do
     post = Post.create(
       user: user,
       topic: topics.first,
       title: Faker::Lorem.sentence, 
       body: Faker::Lorem.paragraph)
     # set the created_at to a time within the past year
-    post.update_attribute(:created_at, Time.now - rand(600..31536000))
+    post.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+    post.update_rank
 
     topics.rotate!
   end

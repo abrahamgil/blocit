@@ -1,14 +1,14 @@
 class VotesController < ApplicationController
   before_filter :setup
-    def up_vote
-      update_vote(1)
-      redirect_to :back
-    end
+  def up_vote
+    update_vote(1)
+    redirect_to :back
+  end
 
-    def down_vote
-      update_vote(-1)
-      redirect_to :back
-    end
+  def down_vote
+    update_vote(-1)
+    redirect_to :back
+  end
     
   private
     
@@ -29,7 +29,8 @@ class VotesController < ApplicationController
       authorize @vote, :create?
       @vote.save
     end
-  end
 
+  end
+  
   
 end
