@@ -15,14 +15,13 @@ class UsersController < ApplicationController
     @posts = @user.posts.visible_to(current_user)
   end
 
+  def index
+    @users = User.top_rated.paginate(page: params[:page], per_page: 10)
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :avatar, :email_favorites)
   end
-
-  def index
-    @users = User.top_rated.paginate(page: params[:page], per_page: 10)
-  end
-
 end

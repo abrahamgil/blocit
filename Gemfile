@@ -8,6 +8,12 @@ end
 group :development do
   gem 'sqlite3'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '2.13.1'
+  gem 'factory_girl_rails', '~> 4.0'
+end
+
 gem 'sass-rails', '~> 4.0.0'
 
 
@@ -49,4 +55,3 @@ gem 'mini_magick'
 gem 'fog'
 
 gem 'will_paginate', '~> 3.0.5'
-
